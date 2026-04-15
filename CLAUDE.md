@@ -54,10 +54,10 @@ D) No UI needed (API / bot / backend only)
 1. **Summarize** the project type and recommended stack (reference `docs/21-stacks.md`)
 2. **Ask for the Figma link** if they answered A or B to Q4
 3. **Present a development plan** broken into phases:
-   - Phase 1: Project setup & architecture
-   - Phase 2: Core features
-   - Phase 3: Testing & security
-   - Phase 4: Deployment & launch
+ - Phase 1: Project setup & architecture
+ - Phase 2: Core features
+ - Phase 3: Testing & security
+ - Phase 4: Deployment & launch
 4. **Ask which documentation** from `docs/` they want you to study first
 
 ### STEP 3 — Development

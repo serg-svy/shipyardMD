@@ -87,22 +87,22 @@ L) Not sure — I'll describe the idea, you decide
 Question 4 of 4 — the last one.
 
 A) Goal:
-   1) Learning / portfolio / personal project
-   2) Startup — want to launch a product
-   3) Order for a client
-   4) Internal tool for a company
+ 1) Learning / portfolio / personal project
+ 2) Startup — want to launch a product
+ 3) Order for a client
+ 4) Internal tool for a company
 
 B) Budget for services (hosting, API, Apple Dev account):
-   1) Zero — free services only
-   2) Small — up to $50/month
-   3) Moderate — $50-200/month
-   4) No limits
+ 1) Zero — free services only
+ 2) Small — up to $50/month
+ 3) Moderate — $50-200/month
+ 4) No limits
 
 C) Deadline:
-   1) None, working at my own pace
-   2) Need an MVP fast (1-4 weeks)
-   3) 1-3 months
-   4) 3-6 months
+ 1) None, working at my own pace
+ 2) Need an MVP fast (1-4 weeks)
+ 3) 1-3 months
+ 4) 3-6 months
 
 Answer in the format: A2, B1, C3
 
@@ -148,57 +148,57 @@ Based on the answers and design/description, Claude builds a plan with this stru
 
 ```
 ═══════════════════════════════════════════
-  DEVELOPER PROFILE
+ DEVELOPER PROFILE
 ═══════════════════════════════════════════
-Level:    [Beginner / Mid-level / Experienced]
-Role:     [Solo / Team]
-Mode:     [Writing myself / With explanations / Claude writes]
+Level: [Beginner / Mid-level / Experienced]
+Role: [Solo / Team]
+Mode: [Writing myself / With explanations / Claude writes]
 
 → This determines: depth of explanations, stack complexity,
-  number of abstractions, strictness of architecture
+ number of abstractions, strictness of architecture
 
 ═══════════════════════════════════════════
-  PROJECT TYPE
+ PROJECT TYPE
 ═══════════════════════════════════════════
-Type:      [Marketplace / E-commerce / SaaS / ...]
-Platform:  [iOS / Android / iOS+Android / Web / SaaS]
-Audience:  [B2C / B2B / Marketplace / Internal]
-Goal:      [Portfolio / Startup / Client / Internal]
+Type: [Marketplace / E-commerce / SaaS / ...]
+Platform: [iOS / Android / iOS+Android / Web / SaaS]
+Audience: [B2C / B2B / Marketplace / Internal]
+Goal: [Portfolio / Startup / Client / Internal]
 
 ═══════════════════════════════════════════
-  STACK — chosen for your type and level
+ STACK — chosen for your type and level
 ═══════════════════════════════════════════
-iOS/Frontend:   [...]
-Backend:        [...]  or  [Firebase/Supabase if no experience]
-DB:             [...]
-Infra:          [...]
-NOT needed:     [...]  ← remove unnecessary parts
+iOS/Frontend: [...]
+Backend: [...] or [Firebase/Supabase if no experience]
+DB: [...]
+Infra: [...]
+NOT needed: [...] ← remove unnecessary parts
 
 ═══════════════════════════════════════════
-  CONSTRAINTS — accounted for
+ CONSTRAINTS — accounted for
 ═══════════════════════════════════════════
-Budget:    [free only / up to $50 / no limit]
-Deadline:  [MVP in N weeks]
-Platform:  [Mac ✓ / ⚠ Windows — warning]
+Budget: [free only / up to $50 / no limit]
+Deadline: [MVP in N weeks]
+Platform: [Mac / Windows — warning]
 Apple Dev: [requires $99/year / not required]
 
 ═══════════════════════════════════════════
-  SCREENS AND FEATURES
+ SCREENS AND FEATURES
 ═══════════════════════════════════════════
 [Screen groups with description of each feature]
 
 ═══════════════════════════════════════════
-  DOCUMENTATION TO STUDY
+ DOCUMENTATION TO STUDY
 ═══════════════════════════════════════════
 [Specific docs pages + one line why each matters]
 
 ═══════════════════════════════════════════
-  SPRINT PLAN
+ SPRINT PLAN
 ═══════════════════════════════════════════
 Sprint 1 (week 1-2): Foundation
-  - auth, navigation, design system, .gitignore, .env
+ - auth, navigation, design system, .gitignore, .env
 Sprint 2 (week 3-5): Core feature
-  - main functionality from the design
+ - main functionality from the design
 Sprint 3 (week 6-8): Secondary functionality
 Sprint 4 (week 9-10): Polish, tests, App Store
 
@@ -206,40 +206,40 @@ Sprint 4 (week 9-10): Polish, tests, App Store
 [If hard deadline — what to cut from MVP]
 
 ═══════════════════════════════════════════
-  RISKS
+ RISKS
 ═══════════════════════════════════════════
 [Technical challenges, pitfalls of the project type]
 
 ADAPTATION RULES:
 - Beginner (A/B in question 1):
-  → Explain each step
-  → Suggest Firebase/Supabase instead of own server
-  → No DI and protocols at start — add later
-  → Highlight "do now" vs "can do later"
+ → Explain each step
+ → Suggest Firebase/Supabase instead of own server
+ → No DI and protocols at start — add later
+ → Highlight "do now" vs "can do later"
 
 - Experienced (C/D in question 1):
-  → Minimal explanations, maximum code
-  → Full architecture from day one
-  → DI, protocols, tests — mandatory
+ → Minimal explanations, maximum code
+ → Full architecture from day one
+ → DI, protocols, tests — mandatory
 
 - No budget (A in question 11):
-  → Supabase (DB + Auth + Storage) — free up to 500MB
-  → Firebase (push, analytics) — free tier
-  → Railway / Render — free hosting
-  → No Twilio — Firebase SMS or Email OTP
+ → Supabase (DB + Auth + Storage) — free up to 500MB
+ → Firebase (push, analytics) — free tier
+ → Railway / Render — free hosting
+ → No Twilio — Firebase SMS or Email OTP
 
 - Windows / no Mac (B in question 12):
-  → ⛔ Native iOS is impossible without a Mac
-  → Alternative: React Native + Expo (works on Windows)
-  → Or: rent a Mac in the cloud (MacStadium, MacinCloud)
+ → Native iOS is impossible without a Mac
+ → Alternative: React Native + Expo (works on Windows)
+ → Or: rent a Mac in the cloud (MacStadium, MacinCloud)
 
 - No deadline (A in question 10):
-  → Do it right from scratch
-  → Full tests, clean architecture
+ → Do it right from scratch
+ → Full tests, clean architecture
 
 - Hard deadline (B in question 10):
-  → MVP: core feature only, everything else — v2
-  → Technical debt — explicitly record what was deferred and why
+ → MVP: core feature only, everything else — v2
+ → Technical debt — explicitly record what was deferred and why
 ```
 
 ---
@@ -273,27 +273,27 @@ When to choose:
 - No development budget
 
 WordPress stack:
-  CMS:      WordPress (https://wordpress.org/documentation/)
-  Hosting:  SpinupWP, Kinsta, or VPS (Hetzner €4/month)
-  Theme:    Astra / GeneratePress (or custom on ACF)
-  Plugins:  ACF Pro (fields), WooCommerce (shop),
-            Yoast SEO, WP Rocket (cache)
-  Deploy:   Git + WP Pusher, or just FTP
+ CMS: WordPress (https://wordpress.org/documentation/)
+ Hosting: SpinupWP, Kinsta, or VPS (Hetzner €4/month)
+ Theme: Astra / GeneratePress (or custom on ACF)
+ Plugins: ACF Pro (fields), WooCommerce (shop),
+ Yoast SEO, WP Rocket (cache)
+ Deploy: Git + WP Pusher, or just FTP
 
 Documentation:
-  https://developer.wordpress.org/               ← main dev portal
-  https://developer.wordpress.org/themes/        ← theme development
-  https://developer.wordpress.org/plugins/       ← plugin development
-  https://www.advancedcustomfields.com/resources/← ACF — custom fields
-  https://woocommerce.com/documentation/         ← WooCommerce shop
+ https://developer.wordpress.org/ ← main dev portal
+ https://developer.wordpress.org/themes/ ← theme development
+ https://developer.wordpress.org/plugins/ ← plugin development
+ https://www.advancedcustomfields.com/resources/← ACF — custom fields
+ https://woocommerce.com/documentation/ ← WooCommerce shop
 
 Tilda stack (completely no-code):
-  https://help.tilda.cc/                         ← Tilda documentation
-  Suitable for: landing pages, events, portfolios
+ https://help.tilda.cc/ ← Tilda documentation
+ Suitable for: landing pages, events, portfolios
 
 Webflow (visual development + code):
-  https://university.webflow.com/                ← Webflow University
-  Suitable for: complex landing pages, CMS sites
+ https://university.webflow.com/ ← Webflow University
+ Suitable for: complex landing pages, CMS sites
 ```
 
 ---
@@ -304,11 +304,11 @@ Webflow (visual development + code):
 
 ```
 Apple Documentation:
-  https://developer.apple.com/documentation/swiftui   ← SwiftUI
-  https://developer.apple.com/documentation/swift     ← Swift language
-  https://developer.apple.com/tutorials/swiftui       ← Apple tutorials
-  https://developer.apple.com/design/human-interface-guidelines/ ← HIG
-  https://developer.apple.com/app-store/review/guidelines/       ← App Store rules
+ https://developer.apple.com/documentation/swiftui ← SwiftUI
+ https://developer.apple.com/documentation/swift ← Swift language
+ https://developer.apple.com/tutorials/swiftui ← Apple tutorials
+ https://developer.apple.com/design/human-interface-guidelines/ ← HIG
+ https://developer.apple.com/app-store/review/guidelines/ ← App Store rules
 
 Stack: SwiftUI + MVVM + Laravel backend (see files 01-15)
 ```
@@ -319,33 +319,33 @@ Stack: SwiftUI + MVVM + Laravel backend (see files 01-15)
 
 ```
 Stack:
-  Language:     Kotlin
-  UI:           Jetpack Compose (Android equivalent of SwiftUI)
-  IDE:          Android Studio
-  Architecture: MVVM + Repository pattern
-  DI:           Hilt (Dagger)
-  Network:      Retrofit + OkHttp
-  Local DB:     Room
-  Navigation:   Navigation Compose
-  Backend:      Laravel / Node.js (same as for iOS)
+ Language: Kotlin
+ UI: Jetpack Compose (Android equivalent of SwiftUI)
+ IDE: Android Studio
+ Architecture: MVVM + Repository pattern
+ DI: Hilt (Dagger)
+ Network: Retrofit + OkHttp
+ Local DB: Room
+ Navigation: Navigation Compose
+ Backend: Laravel / Node.js (same as for iOS)
 
 Documentation:
-  https://developer.android.com/jetpack/compose      ← Jetpack Compose
-  https://developer.android.com/kotlin               ← Kotlin for Android
-  https://developer.android.com/topic/architecture   ← architecture (MVVM)
-  https://developer.android.com/training/dependency-injection/hilt-android ← Hilt DI
-  https://square.github.io/retrofit/                 ← Retrofit networking
-  https://developer.android.com/google/play/billing  ← Google Play Billing
-  https://developer.android.com/distribute/console   ← Play Console
+ https://developer.android.com/jetpack/compose ← Jetpack Compose
+ https://developer.android.com/kotlin ← Kotlin for Android
+ https://developer.android.com/topic/architecture ← architecture (MVVM)
+ https://developer.android.com/training/dependency-injection/hilt-android ← Hilt DI
+ https://square.github.io/retrofit/ ← Retrofit networking
+ https://developer.android.com/google/play/billing ← Google Play Billing
+ https://developer.android.com/distribute/console ← Play Console
 
 iOS → Android equivalents:
-  SwiftUI        → Jetpack Compose
-  Xcode          → Android Studio
-  TestFlight     → Google Play Internal Testing
-  Apple Pay      → Google Pay
-  APNs           → FCM (Firebase Cloud Messaging)
-  Keychain       → Android Keystore + EncryptedSharedPreferences
-  UserNotifications → NotificationManager / WorkManager
+ SwiftUI → Jetpack Compose
+ Xcode → Android Studio
+ TestFlight → Google Play Internal Testing
+ Apple Pay → Google Pay
+ APNs → FCM (Firebase Cloud Messaging)
+ Keychain → Android Keystore + EncryptedSharedPreferences
+ UserNotifications → NotificationManager / WorkManager
 ```
 
 ---
@@ -354,42 +354,42 @@ iOS → Android equivalents:
 
 ```
 React Native (JavaScript/TypeScript):
-  IDE:        VS Code — works on Windows/Mac/Linux ✓
-  Language:   TypeScript
-  UI:         React Native components
-  Navigation: React Navigation
-  State:      Zustand / Redux Toolkit
-  Network:    Axios / React Query
-  Push:       Firebase Cloud Messaging (FCM)
+ IDE: VS Code — works on Windows/Mac/Linux 
+ Language: TypeScript
+ UI: React Native components
+ Navigation: React Navigation
+ State: Zustand / Redux Toolkit
+ Network: Axios / React Query
+ Push: Firebase Cloud Messaging (FCM)
 
-  Documentation:
-    https://reactnative.dev/docs/getting-started    ← React Native docs
-    https://reactnavigation.org/docs/getting-started ← navigation
-    https://expo.dev/                               ← Expo (easier start)
-    https://docs.expo.dev/                          ← Expo docs
+ Documentation:
+ https://reactnative.dev/docs/getting-started ← React Native docs
+ https://reactnavigation.org/docs/getting-started ← navigation
+ https://expo.dev/ ← Expo (easier start)
+ https://docs.expo.dev/ ← Expo docs
 
 Flutter (Dart):
-  IDE:          VS Code / Android Studio — Windows/Mac/Linux ✓
-  Language:     Dart
-  UI:           Flutter widgets
-  Architecture: BLoC / Riverpod
-  Network:      Dio / http
+ IDE: VS Code / Android Studio — Windows/Mac/Linux 
+ Language: Dart
+ UI: Flutter widgets
+ Architecture: BLoC / Riverpod
+ Network: Dio / http
 
-  Documentation:
-    https://docs.flutter.dev/                       ← Flutter docs
-    https://dart.dev/guides                         ← Dart language
-    https://pub.dev/                                ← packages (pub.dev)
-    https://bloclibrary.dev/                        ← BLoC pattern
+ Documentation:
+ https://docs.flutter.dev/ ← Flutter docs
+ https://dart.dev/guides ← Dart language
+ https://pub.dev/ ← packages (pub.dev)
+ https://bloclibrary.dev/ ← BLoC pattern
 
 When React Native:
-  - You already know JavaScript/TypeScript
-  - No Mac (can develop on Windows via Expo)
-  - Team of web developers
+ - You already know JavaScript/TypeScript
+ - No Mac (can develop on Windows via Expo)
+ - Team of web developers
 
 When Flutter:
-  - Maximum performance needed
-  - Unified UI on iOS + Android + Web + Desktop
-  - Team ready to learn Dart
+ - Maximum performance needed
+ - Unified UI on iOS + Android + Web + Desktop
+ - Team ready to learn Dart
 ```
 
 ---
@@ -400,31 +400,31 @@ When Flutter:
 If you chose E-commerce / SaaS / Dashboard in question 3:
 
 Next.js stack (recommended):
-  Frontend: Next.js 14+ (React) + TypeScript
-  Styling:  Tailwind CSS
-  UI lib:   shadcn/ui
-  Backend:  Next.js API Routes / Laravel
-  DB:       PostgreSQL (Supabase free tier)
-  Auth:     NextAuth.js / Supabase Auth
-  Deploy:   Vercel (free for start)
+ Frontend: Next.js 14+ (React) + TypeScript
+ Styling: Tailwind CSS
+ UI lib: shadcn/ui
+ Backend: Next.js API Routes / Laravel
+ DB: PostgreSQL (Supabase free tier)
+ Auth: NextAuth.js / Supabase Auth
+ Deploy: Vercel (free for start)
 
-  Documentation:
-    https://nextjs.org/docs                         ← Next.js
-    https://tailwindcss.com/docs                    ← Tailwind
-    https://ui.shadcn.com/docs                      ← shadcn/ui
-    https://supabase.com/docs                       ← Supabase
-    https://next-auth.js.org/getting-started        ← NextAuth
+ Documentation:
+ https://nextjs.org/docs ← Next.js
+ https://tailwindcss.com/docs ← Tailwind
+ https://ui.shadcn.com/docs ← shadcn/ui
+ https://supabase.com/docs ← Supabase
+ https://next-auth.js.org/getting-started ← NextAuth
 
 Laravel + Blade (if you already know PHP):
-  Frontend: Blade templates + Alpine.js / Livewire
-  Backend:  Laravel 11
-  DB:       PostgreSQL
-  Deploy:   Forge + Hetzner / Railway
+ Frontend: Blade templates + Alpine.js / Livewire
+ Backend: Laravel 11
+ DB: PostgreSQL
+ Deploy: Forge + Hetzner / Railway
 
-  Documentation:
-    https://laravel.com/docs                        ← Laravel
-    https://livewire.laravel.com/docs               ← Livewire
-    https://alpinejs.dev/                           ← Alpine.js
+ Documentation:
+ https://laravel.com/docs ← Laravel
+ https://livewire.laravel.com/docs ← Livewire
+ https://alpinejs.dev/ ← Alpine.js
 ```
 
 ---
@@ -433,17 +433,17 @@ Laravel + Blade (if you already know PHP):
 
 ```
 Stack:
-  Bot:      python-telegram-bot / Grammy (Node.js)
-  Mini App: React / Vue + Telegram Web App API
-  Backend:  FastAPI (Python) / Express (Node)
-  DB:       PostgreSQL / SQLite for simple bots
-  Hosting:  Railway / Render (free)
+ Bot: python-telegram-bot / Grammy (Node.js)
+ Mini App: React / Vue + Telegram Web App API
+ Backend: FastAPI (Python) / Express (Node)
+ DB: PostgreSQL / SQLite for simple bots
+ Hosting: Railway / Render (free)
 
 Documentation:
-  https://core.telegram.org/bots/api               ← Bot API
-  https://core.telegram.org/bots/webapps           ← Mini Apps
-  https://docs.python-telegram-bot.org/            ← python-telegram-bot
-  https://grammy.dev/                              ← Grammy (Node.js)
+ https://core.telegram.org/bots/api ← Bot API
+ https://core.telegram.org/bots/webapps ← Mini Apps
+ https://docs.python-telegram-bot.org/ ← python-telegram-bot
+ https://grammy.dev/ ← Grammy (Node.js)
 ```
 
 ---
@@ -454,9 +454,9 @@ Documentation:
 *(Avito, OLX, Craigslist)*
 
 ```
-iOS:     MapKit, PhotosUI, CoreLocation, UserNotifications
+iOS: MapKit, PhotosUI, CoreLocation, UserNotifications
 Backend: PostgreSQL + PostGIS (geo search), Meilisearch (search), Redis, S3/MinIO
-Extra:   WebSockets (chat), Push (new messages)
+Extra: WebSockets (chat), Push (new messages)
 Not needed: complex cart, StoreKit subscriptions (if no monetization)
 ```
 
@@ -471,9 +471,9 @@ Key decisions:
 *(shop, catalog, cart, payment)*
 
 ```
-iOS:     StoreKit 2 (if in-app), PhotosUI
+iOS: StoreKit 2 (if in-app), PhotosUI
 Backend: PostgreSQL, Redis (cart, sessions), Stripe/LiqPay
-Extra:   Queues (order processing), Email (receipts)
+Extra: Queues (order processing), Email (receipts)
 Not needed: PostGIS, Meilisearch (if catalog is small — simple LIKE)
 ```
 
@@ -488,9 +488,9 @@ Key decisions:
 *(management, subscription, analytics)*
 
 ```
-iOS:     Charts (iOS 16+), PDFKit (export)
+iOS: Charts (iOS 16+), PDFKit (export)
 Backend: PostgreSQL, Redis, queues for heavy reports
-Extra:   Multi-tenancy (companies/teams), user roles
+Extra: Multi-tenancy (companies/teams), user roles
 Not needed: PostGIS, MediaLibrary (if no file uploads)
 ```
 
@@ -505,9 +505,9 @@ Key decisions:
 *(feed, follows, likes, stories)*
 
 ```
-iOS:     AVFoundation (video), PhotosUI, UserNotifications
+iOS: AVFoundation (video), PhotosUI, UserNotifications
 Backend: PostgreSQL, Redis (counters, feed), queues
-Extra:   CDN for media (not MinIO — use Cloudflare/AWS), WebSockets
+Extra: CDN for media (not MinIO — use Cloudflare/AWS), WebSockets
 Not needed: PostGIS (if no geolocation)
 ```
 
@@ -522,9 +522,9 @@ Key decisions:
 *(doctor appointments, beauty, tutors)*
 
 ```
-iOS:     EventKit (calendar), MapKit, UserNotifications
+iOS: EventKit (calendar), MapKit, UserNotifications
 Backend: PostgreSQL, Redis, queues (reminders)
-Extra:   Cron jobs (reminders one hour before), Email/SMS
+Extra: Cron jobs (reminders one hour before), Email/SMS
 Not needed: Meilisearch (if low data volume)
 ```
 
@@ -539,9 +539,9 @@ Key decisions:
 *(business management, reports, roles)*
 
 ```
-iOS:     Charts, PDFKit, DocumentPicker
+iOS: Charts, PDFKit, DocumentPicker
 Backend: PostgreSQL, Redis, queues for reports
-Extra:   Roles and permissions (Spatie Permission), audit log
+Extra: Roles and permissions (Spatie Permission), audit log
 Not needed: Meilisearch, PostGIS
 ```
 
@@ -556,9 +556,9 @@ Key decisions:
 *(orders, courier tracking, routes)*
 
 ```
-iOS:     MapKit + MKDirections (routes), CoreLocation (background), UserNotifications
+iOS: MapKit + MKDirections (routes), CoreLocation (background), UserNotifications
 Backend: PostgreSQL + PostGIS, Redis (real-time positions), WebSockets
-Extra:   Background Location (entitlement required!)
+Extra: Background Location (entitlement required!)
 Not needed: Meilisearch
 ```
 
@@ -573,9 +573,9 @@ Key decisions:
 *(courses, lessons, progress, tests)*
 
 ```
-iOS:     AVFoundation (video lessons), AVPlayer, CoreData (offline)
+iOS: AVFoundation (video lessons), AVPlayer, CoreData (offline)
 Backend: PostgreSQL, S3 (video), CloudFront CDN
-Extra:   DRM for content protection, progress sync
+Extra: DRM for content protection, progress sync
 Not needed: PostGIS, Meilisearch (basic search)
 ```
 
@@ -590,9 +590,9 @@ Key decisions:
 *(payments, accounts, transactions)*
 
 ```
-iOS:     PassKit (Apple Pay), LocalAuthentication (Face ID), CryptoKit
+iOS: PassKit (Apple Pay), LocalAuthentication (Face ID), CryptoKit
 Backend: PostgreSQL (ACID transactions), Redis, queues
-Extra:   PCI DSS compliance, audit of all operations, encryption
+Extra: PCI DSS compliance, audit of all operations, encryption
 Not needed: MediaLibrary, Meilisearch
 ```
 
@@ -608,9 +608,9 @@ Key decisions:
 *(doctors, patients, medical records, telemedicine)*
 
 ```
-iOS:     HealthKit, AVFoundation (video calls), CryptoKit
+iOS: HealthKit, AVFoundation (video calls), CryptoKit
 Backend: PostgreSQL (column encryption), S3 (encryption)
-Extra:   HIPAA compliance (USA), encryption at rest and in transit
+Extra: HIPAA compliance (USA), encryption at rest and in transit
 Not needed: Meilisearch (search over medical data — a separate topic)
 ```
 
