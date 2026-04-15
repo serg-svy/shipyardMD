@@ -1,0 +1,109 @@
+# ==============================================================
+# DevForge — .gitignore
+# Covers: macOS, iOS/Xcode, Laravel/PHP, Node.js, Python, Docker
+# NEVER commit secrets, credentials, or environment files
+# ==============================================================
+
+# ---- Secrets & Environment (CRITICAL) ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.p8
+*.mobileprovision
+secrets/
+credentials/
+service-account*.json
+google-services.json
+GoogleService-Info.plist
+
+# ---- macOS ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+# ---- Xcode / iOS ----
+xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.xcarchive
+*.dSYM.zip
+*.dSYM
+Pods/
+.build/
+*.resolved          # keep Package.resolved for reproducible builds (optional)
+
+# ---- Node.js ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+.next/
+.nuxt/
+.output/
+.vercel/
+
+# ---- PHP / Laravel ----
+vendor/
+bootstrap/cache/*.php
+storage/*.key
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+.phpunit.result.cache
+*.cache
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+.pytest_cache/
+.mypy_cache/
+
+# ---- Docker ----
+docker-compose.override.yml
+
+# ---- Editors ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*.orig
+.history/
+
+# ---- Logs ----
+*.log
+logs/
+
+# ---- Databases ----
+*.sqlite
+*.sqlite3
+*.db
+
+# ---- Certificates & Keys ----
+*.cert
+*.crt
+*.csr
+*.pfx
+
+# ---- Build artifacts ----
+build/
+out/
+target/

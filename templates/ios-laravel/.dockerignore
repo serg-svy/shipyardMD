@@ -1,0 +1,12 @@
+.git
+.env
+.env.*
+node_modules
+vendor
+storage/logs
+storage/app/public
+tests
+*.md
+docker/
+.gitlab-ci.yml
+.github/

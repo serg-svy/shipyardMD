@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(docker:*)",
+      "Bash(docker compose:*)",
+      "Bash(php artisan:*)",
+      "Bash(composer:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(swift:*)",
+      "Bash(pip:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport sys, json, re\ntry:\n    data = json.load(sys.stdin)\nexcept:\n    sys.exit(0)\ncontent = str(data)\npatterns = [\n    r'(?i)(api[_-]?key|secret[_-]?key|access[_-]?token|auth[_-]?token|private[_-]?key)\\s*=\\s*[\\\"\\'][a-zA-Z0-9/+]{20,}',\n    r'sk-[a-zA-Z0-9]{32,}',\n    r'AIza[0-9A-Za-z\\\\-_]{35}',\n    r'AKIA[0-9A-Z]{16}',\n    r'ghp_[a-zA-Z0-9]{36}',\n    r'xoxb-[0-9]{11}-[0-9]{11}-[a-zA-Z0-9]{24}'\n]\nfor p in patterns:\n    if re.search(p, content):\n        print('SECURITY ALERT: Possible secret/API key detected in file. Do NOT commit this value. Move it to .env instead.')\n        sys.exit(2)\n\""
+          }
+        ]
+      }
+    ]
+  }
+}
