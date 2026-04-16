@@ -527,6 +527,175 @@ MONITORING BEFORE DOWNSCALING:
  # If peak < 60% of current capacity — safe to downscale
 ```
 
+
+---
+
+## RDS Downscaling — When and How
+
+Moving builds to CI Runner frees RAM on app servers. But the same principle applies to databases: most projects start on over-provisioned RDS instances.
+
+### When It Is Safe to Downscale RDS
+
+```
+SAFE TO DOWNSCALE WHEN:
+ CPU utilization < 20% average (check CloudWatch, past 2 weeks)
+ RAM usage < 50% of current instance
+ No slow queries > 1s (check pg_stat_statements or RDS Performance Insights)
+ Connection count stable (not spiking near max_connections)
+
+TYPICAL SIZES BY LOAD:
+ < 1,000 active users → db.t3.micro (1 GB RAM) — experiment, monitor closely
+ < 10,000 active users → db.t3.small (2 GB RAM) — solid default
+ < 50,000 active users → db.t3.medium (4 GB RAM) — comfortable headroom
+ > 50,000 active users → db.t3.large+ — consider read replica first
+```
+
+### Real-World Downscale Results
+
+```
+Project: C&H USA (cooperhunter-rds)
+ db.t3.medium (4 GB) → db.t3.small (2 GB) = −$25/month
+
+Project: VoIP backend
+ db.t3.medium → db.t3.small = −$25/month
+ t3.xlarge app server → t3.medium (after CI Runner migration)
+
+Experiment: db.t3.micro
+ Smallest available RDS instance (1 GB RAM)
+ Viable for low-traffic projects with < 500 concurrent users
+ Watch for: connection pool exhaustion, OOM on complex queries
+
+Overall target: $1,200/month → $300–500/month
+ Achieved by: CI Runner + app server downscale + RDS downscale combined
+```
+
+### How to Downscale RDS Safely
+
+```
+1. Enable Performance Insights (free tier: 7 days retention)
+   → CloudWatch → RDS → your instance → Performance Insights
+
+2. Check for 2 weeks minimum:
+   - Average CPU: should be < 20%
+   - FreeableMemory: should stay > 40% of current RAM
+   - DatabaseConnections: should not spike near max_connections
+
+3. Take a manual snapshot before downscaling
+   aws rds create-db-snapshot      --db-instance-identifier your-db      --db-snapshot-identifier pre-downscale-$(date +%Y%m%d)
+
+4. Modify instance class (causes ~5 min downtime):
+   aws rds modify-db-instance      --db-instance-identifier your-db      --db-instance-class db.t3.small      --apply-immediately
+
+5. Monitor for 48 hours after downscale:
+   watch -n 5 "aws cloudwatch get-metric-statistics \
+     --namespace AWS/RDS \
+     --metric-name FreeableMemory \
+     --dimensions Name=DBInstanceIdentifier,Value=your-db \
+     --start-time $(date -u -v-1H +%Y-%m-%dT%H:%M:%S) \
+     --end-time $(date -u +%Y-%m-%dT%H:%M:%S) \
+     --period 60 --statistics Average"
+```
+
+### PostgreSQL — Check Active Connections Before Downscaling
+
+```sql
+-- How many connections are active right now?
+SELECT count(*) FROM pg_stat_activity WHERE state = 'active';
+
+-- What is max_connections set to?
+SHOW max_connections;
+
+-- If active connections > 80% of max_connections → do NOT downscale
+-- Fix connection pooling (PgBouncer) first
+
+-- Check which queries are slow
+SELECT query, mean_exec_time, calls
+FROM pg_stat_statements
+ORDER BY mean_exec_time DESC
+LIMIT 10;
+```
+
+
+---
+
+## RDS Downscaling — When and How
+
+Moving builds to CI Runner frees RAM on app servers. The same principle applies to databases: most projects start on over-provisioned RDS instances and never revisit the size.
+
+### When It Is Safe to Downscale RDS
+
+```
+SAFE TO DOWNSCALE WHEN:
+ CPU utilization < 20% average (check CloudWatch, past 2 weeks)
+ FreeableMemory stays above 50% of current RAM
+ No slow queries > 1s in pg_stat_statements
+ Active connections well below max_connections
+
+TYPICAL SIZES BY LOAD:
+ Early MVP / low traffic  → db.t3.micro (1 GB)  — monitor closely
+ Up to 10k active users   → db.t3.small (2 GB)  — solid default
+ Up to 50k active users   → db.t3.medium (4 GB) — comfortable headroom
+ Beyond that              → consider read replica before upsizing
+```
+
+### How to Downscale RDS Safely
+
+```
+1. Enable Performance Insights (free tier: 7 days)
+   CloudWatch → RDS → your instance → Performance Insights
+
+2. Observe for at least 2 weeks:
+   - Average CPU
+   - FreeableMemory trend
+   - DatabaseConnections vs max_connections
+
+3. Take a manual snapshot before any change
+   aws rds create-db-snapshot      --db-instance-identifier your-db      --db-snapshot-identifier pre-downscale-YYYYMMDD
+
+4. Modify instance class (~5 min downtime):
+   aws rds modify-db-instance      --db-instance-identifier your-db      --db-instance-class db.t3.small      --apply-immediately
+
+5. Monitor for 48 hours after the change
+```
+
+### Check Connections Before Downscaling
+
+```sql
+-- Active connections right now
+SELECT count(*) FROM pg_stat_activity WHERE state = 'active';
+
+-- Max connections limit
+SHOW max_connections;
+
+-- If active > 80% of max — fix connection pooling (PgBouncer) first, then downscale
+
+-- Top slow queries
+SELECT query, mean_exec_time, calls
+FROM pg_stat_statements
+ORDER BY mean_exec_time DESC
+LIMIT 10;
+```
+
+### Combined Effect: CI Runner + App Server + RDS
+
+```
+The three optimizations compound:
+
+1. Move Docker builds to CI Runner
+   → App server no longer needs RAM reserve for builds
+   → Downscale app server (e.g. t3.large → t3.small)
+
+2. Downscale RDS after confirming low utilization
+   → Each step down saves $20–50/month per instance
+
+3. Use :alpine images and mem_limit in compose
+   → Containers stay within bounds, no RAM surprises
+
+Result: a project that started on expensive instances
+can often run on instances 2–4x smaller
+once builds are off the server and utilization is measured.
+```
+
 ---
 
 ## Useful Commands
