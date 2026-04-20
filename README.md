@@ -71,6 +71,27 @@ Guides every step with senior-level standards:
 
 ---
 
+## The Sprint — Think → Plan → Build → Review → Test → Ship
+
+ShipyardMD ships with a full production workflow as slash commands. Every feature follows this sequence:
+
+```
+Think → Plan → Build → Review → Test → Ship
+```
+
+| Command | When | What it does |
+|---------|------|-------------|
+| `/review` | Before every PR | Finds bugs, auto-fixes obvious issues, security pass, flags architectural deviations |
+| `/ship` | Feature is done | Syncs main, runs tests, bisects commits, opens PR, updates CHANGELOG |
+| `/qa [url]` | After staging deploy | Tests real user flows end-to-end, writes regression tests for every bug |
+| `/security` | Before production release | OWASP Top 10 + STRIDE threat model, no false positives |
+| `/investigate [bug]` | Debugging | Systematic root cause analysis — hypothesis → confirm → fix → test |
+
+Full workflow guide → [docs/22-workflow.md](docs/22-workflow.md)
+When Claude suggests each skill → [docs/24-skill-recommendations.md](docs/24-skill-recommendations.md)
+
+---
+
 ## Supported Stacks
 
 | Project Type | Stack |

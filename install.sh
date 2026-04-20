@@ -68,11 +68,29 @@ if [ -f ".env.example" ]; then
   echo -e "${YELLOW}  → Fill in your secrets in .env before starting${NC}"
 fi
 
+# --- Install workflow skills ---
+
+echo ""
+echo -e "${YELLOW}Installing workflow skills...${NC}"
+
+SKILLS_DIR=".claude/skills"
+mkdir -p "$SKILLS_DIR"
+
+for skill in review ship qa security investigate; do
+  if [ -d "skills/$skill" ]; then
+    mkdir -p "$SKILLS_DIR/$skill"
+    ln -sf "$(pwd)/skills/$skill/SKILL.md" "$SKILLS_DIR/$skill/SKILL.md"
+    echo -e "${GREEN}✓ /$skill skill installed${NC}"
+  fi
+done
+
+echo -e "${GREEN}✓ Skills ready: /review /ship /qa /security /investigate${NC}"
+
 # --- Done ---
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════╗${NC}"
-echo -e "${GREEN}║         DevForge is ready!           ║${NC}"
+echo -e "${GREEN}║        ShipyardMD is ready!          ║${NC}"
 echo -e "${GREEN}╚══════════════════════════════════════╝${NC}"
 echo ""
 echo -e "Your project: ${BLUE}./$PROJECT_NAME${NC}"
@@ -81,6 +99,13 @@ echo -e "${YELLOW}Next steps:${NC}"
 echo "  1. cd $PROJECT_NAME"
 echo "  2. claude ."
 echo "  3. Answer Claude's 4 questions to start your project"
+echo ""
+echo -e "${YELLOW}Workflow skills available:${NC}"
+echo "  /review    — code review before every PR"
+echo "  /ship      — sync, test, commit, open PR, update CHANGELOG"
+echo "  /qa [url]  — QA test on staging"
+echo "  /security  — OWASP + STRIDE security audit"
+echo "  /investigate [bug] — systematic root cause debugging"
 echo ""
 echo -e "${YELLOW}Security reminder:${NC}"
 echo "  → Add your secrets to .env (never commit this file)"
